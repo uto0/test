@@ -1,13 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Smart Parking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f1f1f1;
+      padding-top: 50px;
+    }
+    button {
+      font-size: 20px;
+      padding: 10px 30px;
+      background: green;
+      color: white;
+      border: none;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
-  <h1>hello word</h1>
-  <h2>hi</h2>  
-</body>
+  <h1>🚗 Smart Parking System</h1>
+  <p>Click to reserve your parking spot:</p>
+  <button onclick="reserve()">Reserve Spot</button>
+  <p id="status"></p>
 
+  <script>
+    function reserve() {
+      fetch('/reserve')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('status').innerText = data;
+        });
+    }
+  </script>
+</body>
 </html>
